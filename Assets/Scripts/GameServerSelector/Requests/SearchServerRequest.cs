@@ -152,6 +152,22 @@ namespace GameServerSelector.Requests
 			queries.Add(query);
 			return this;
 		}
+		
+		public SearchServerRequest AddEqualQuery(string field, string value)
+		{
+			var query = new Query
+			{
+				Field = field,
+				QueryData = new QueryData
+				{
+					Operator = Equal,
+					Value = value
+				}
+			};
+
+			queries.Add(query);
+			return this;
+		}
 		private SearchServerRequest AddQuery(string field, string queryOperator, object value)
 		{
 			var query = new Query
